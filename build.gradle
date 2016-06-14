@@ -2,7 +2,6 @@ apply plugin: 'java'
 apply plugin: 'groovy'
 apply plugin: "jacoco"
 apply plugin: 'idea'
-apply plugin: 'docker'
 
 group = '3ma-3MonthJunior'
 version = '0.1.0'
@@ -22,9 +21,24 @@ repositories {
 
 dependencies {
 
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version:'1.3.5.RELEASE'
+    compile 'org.springframework.data:spring-data-mongodb:1.8.4.RELEASE'
+    compile 'org.springframework.data:spring-data-redis:1.6.4.RELEASE'
+    compile 'org.springframework.data:spring-data-elasticsearch:1.3.1.RELEASE'
 
-    compile 'org.jacoco:jacoco-maven-plugin:0.7.6.201602180812'
+     //For ElasticFiller
+    compile 'com.fasterxml.jackson.core:jackson-core:2.3.1'
+
+    //For RedisFiller
+    compile 'stax:stax-api:1.0.1'
+
+    compile 'org.slf4j:slf4j-api:1.7.13'
+    compile 'ch.qos.logback:logback-core:1.1.7'
+
+    // http://mvnrepository.com/artifact/com.github.docker-java/docker-java
+    compile group: 'com.github.docker-java', name: 'docker-java', version: '3.0.0'
+
+//    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version:'1.3.5.RELEASE'
+
 
     testCompile group: 'junit', name: 'junit', version:'4.12'
 
@@ -46,19 +60,29 @@ dependencies {
         transitive = false // this avoids affecting your version of Groovy/Spock
     }
 
-    testCompile 'org.slf4j:slf4j-api:1.7.13'
+//    testCompile 'org.slf4j:slf4j-api:1.7.13'
     testCompile 'org.slf4j:slf4j-simple:1.7.13'
 
+
+    // Strict Control of Java Code Quality  http://www.yegor256.com/2014/08/13/strict-code-quality-control.html
+    // including Checkstyle, PMD, FindBugs, Cobertura, etc.        // another - Code Coverage with Cobertura http://jdpgrailsdev.github.io/blog/2014/04/29/gradle_cobertura.html
+    testCompile 'com.qulice:qulice-maven-plugin:0.16.5'
+
+
+    //    compile 'org.jacoco:jacoco-maven-plugin:0.7.6.201602180812'
+
+
 }
 
 
-jacocoTestReport {
-    reports {
-        xml.enabled false
-        csv.enabled false
-        html.destination "${buildDir}/jacocoHtml"
-    }
-}
+
+//jacocoTestReport {
+//    reports {
+//        xml.enabled false
+//        csv.enabled false
+//        html.destination "${buildDir}/jacocoHtml"
+//    }
+//}
 
 //checkstyle {
 //   config = resources.text.fromFile("checkstyle.xml", "UTF-8")
@@ -66,8 +90,10 @@ jacocoTestReport {
 //   ignoreFailures = false
 //}
 
+
+//If you want to ensure that Checkstyle runs before the test
+//test.mustRunAfter checkstyleMain, checkstyleTest
+
 task wrapper(type: Wrapper) {
     gradleVersion = '2.13'
 }
-
-//test
