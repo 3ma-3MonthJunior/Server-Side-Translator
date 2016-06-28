@@ -1,1 +1,5 @@
 rootProject.name = 'server_side_translator'
+include 'elastic-filler'
+include 'redis-filler'
+include 'mongo-filler'
+
