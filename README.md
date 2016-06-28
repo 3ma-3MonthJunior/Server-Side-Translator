@@ -6,7 +6,7 @@ https://3monthjunior.slack.com/files/lozenko/F1GMKRFGB/Deep_Server-Side_Translat
 Задача усложнена, поэтому если какие-то процессы вам покажуться странными - знайте, это сделанно для того чтобы вы познакомились с новым для себя стеком.
 Перед вами архитектура приложения (кликните для более большей картинки, если понадобится)
 
-!(images)[http://raw.githubusercontent.com/3ma-3MonthJunior/Server-Side-Translator/mongo/data-translator.png]
+![архитектура](data-translator.png)
 
 У вас есть 2 Docker контейнера. На одном установлен чистый ElasticSearch, на другом установлен Redis. Для того чтобы максимально облегчить вам задачу, вопсользуйтесь сервисом DockerHub, если же хотите действительно разобраться в Docker - сделайте докер образы (docker images) самому.
 
