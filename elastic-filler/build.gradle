@@ -17,4 +17,5 @@ dependencies {
 
     //For ElasticFiller
     compile 'com.fasterxml.jackson.core:jackson-core:2.3.1'
+    compile 'org.elasticsearch:elasticsearch:2.3.3'
 }

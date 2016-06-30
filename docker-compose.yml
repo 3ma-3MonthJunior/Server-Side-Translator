@@ -9,8 +9,8 @@ services:
 #     - .:/code
   redis:
     image: redis
-    ports:
-      - "6379"
+#    ports:
+#      - "6379"
   elasticsearch:
     image: elasticsearch:latest
 #  command: elasticsearch -Des.network.host=0.0.0.0

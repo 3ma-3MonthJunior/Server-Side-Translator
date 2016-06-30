@@ -17,4 +17,8 @@ dependencies {
 
     //For RedisFiller
     compile 'stax:stax-api:1.0.1'
+    compile 'redis.clients:jedis:2.0.0'
+//    compile 'redis.clients:jedis:2.8.1'
+
+    compile 'org.json:json:20160212'
 }
